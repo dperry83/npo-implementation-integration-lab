@@ -1,5 +1,5 @@
 # BrightFuture Data Model
-**Current Version:** v.0.1
+**Current Version:** v.0.1 <br>
 **Last Updated:** 2026-03-26
 **Scope:** Core fundraising and CRM entities for BrightFuture implementation lab
 
