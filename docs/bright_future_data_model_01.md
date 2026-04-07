@@ -16,51 +16,51 @@ This document defines the core entities for BrightFuture's nonprofit CRM impleme
 ## 3. Entity Details
 ### 3.1 Constituent
 
-|  Field Name  |   Type   |  Unique?  |  Required?  |
-| --------------------------------------------------|
-|  id          |  integer |  True     |  True       |
-|  name        |  varchar |  False    |  False      |
-|  email       |  varchar |  False    |  False      |
-|  phone       |  varchar |  False    |  False      |
-|  address     |  varchar |  False    |  False      |
-|  created_at  |  date    |  False    |  True       |
-| --------------------------------------------------|
+    |  Field Name  |   Type   |  Unique?  |  Required?  |
+    | --------------------------------------------------|
+    |  id          |  integer |  True     |  True       |
+    |  name        |  varchar |  False    |  False      |
+    |  email       |  varchar |  False    |  False      |
+    |  phone       |  varchar |  False    |  False      |
+    |  address     |  varchar |  False    |  False      |
+    |  created_at  |  date    |  False    |  True       |
+    | --------------------------------------------------|
 
 ### 3.2 Attribute
 
-|  Field Name  |   Type   |  Unique?  |  Required?  |
-| --------------------------------------------------|
-|  id          |  integer |  True     |  True       |
-|  type        |  varchar |  True     |  True       |
-|  name        |  varchar |  False    |  True       |
-|  description |  varchar |  False    |  False      |
+    |  Field Name  |   Type   |  Unique?  |  Required?  |
+    | --------------------------------------------------|
+    |  id          |  integer |  True     |  True       |
+    |  type        |  varchar |  True     |  True       |
+    |  name        |  varchar |  False    |  True       |
+    |  description |  varchar |  False    |  False      |
 
 ### 3.3 Donation
 
-|  Field Name  |   Type   |  Unique?  |  Required?  |
-| --------------------------------------------------|
-|  id          |  integer |  True     |  True       |
-|  amount      |  decimal |  False    |  True       |
-|  date        |  date    |  False    |  True       |
+    |  Field Name  |   Type   |  Unique?  |  Required?  |
+    | --------------------------------------------------|
+    |  id          |  integer |  True     |  True       |
+    |  amount      |  decimal |  False    |  True       |
+    |  date        |  date    |  False    |  True       |
 
 ### 3.4 Campaign
 
-|  Field Name  |   Type   |  Unique?  |  Required?  |
-| --------------------------------------------------|
-|  id          |  integer |  True     |  True       |
-|  name        |  varchar |  True     |  True       |
-|  goal        |  decimal |  False    |  True       |
-|  start_at    |  date    |  False    |  True       |
-|  end_at      |  date    |  False    |  False      |
+    |  Field Name  |   Type   |  Unique?  |  Required?  |
+    | --------------------------------------------------|
+    |  id          |  integer |  True     |  True       |
+    |  name        |  varchar |  True     |  True       |
+    |  goal        |  decimal |  False    |  True       |
+    |  start_at    |  date    |  False    |  True       |
+    |  end_at      |  date    |  False    |  False      |
 
 ### 3.5 Interaction
 
-|  Field Name  |   Type   |  Unique?  |  Required?  |
-| --------------------------------------------------|
-|  id          |  integer |  True     |  True       |
-|  channel     |  varchar |  False    |  True       |
-|  date        |  date    |  False    |  True       |
-|  content     |  varchar |  False    |  False      |
+    |  Field Name  |   Type   |  Unique?  |  Required?  |
+    | --------------------------------------------------|
+    |  id          |  integer |  True     |  True       |
+    |  channel     |  varchar |  False    |  True       |
+    |  date        |  date    |  False    |  True       |
+    |  content     |  varchar |  False    |  False      |
 
 ## 4. Entity Relationships
 - One **Constituent** can have many **Donations**.  One **Donation** must be attributed to one **Constituent**
