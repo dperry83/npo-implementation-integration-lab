@@ -1,17 +1,21 @@
 # BrightFuture Data Model
-**Current Version:** v.0.1 <br>
-**Last Updated:** 2026-03-26
+**Current Version:** v.0.1    
+**Last Updated:** 2026-04-07    
 **Scope:** Core fundraising and CRM entities for BrightFuture implementation lab
 
 ## 1. Purpose
-This document defines the core entities for BrightFuture's nonprofit CRM implementation.  It defines main entities, their fields, and relationships to ensure consistency in data migration, implementation, and reporting.
+This document defines the logical data model for the BrightFuture nonprofit fundraising CRM iplementation.  It describes primary entities, their attributes, and the relationships required to support donor management, fundraising campaigns, donations, and constituent engagement tracking.  This model is intended to support:
+- Data Migration from legacy systems
+- API integrations with external systems such as Salesforce
+- Reporting on donors, gifts, campaigns, and interactions
+- Shared understanding of the core business objects and logic
 
 ## 2. Core entities
-- **Constituent** - Individual supporter who can engage across all channels
-- **Attributes** - Metadata about Constituents
-- **Donation** - A gift of monetary value, must be tied to a Constituent, and can be tied to a Campaign
-- **Campaign** - Fundraising initiative with goals, dates, and Interaction channels
-- **Interaction** - Non-gift point of contact with any Constituent.  Available types: Phone Call, Email, Meeting, Letter, Text
+- **Constituent** - Individual supporter who engages with BrightFuture as a donor, prospect, volunteer, or supporter
+- **Attributes** - A reusable label, classification, or segment applied to constituents, such as "volunteer" or "board member"
+- **Donation** - A gift of monetary value, must be tied to a Constituent, optionally associated with a Campaign
+- **Campaign** - A fundraising initiative used to group and measure donations and interactions
+- **Interaction** - A tracked engagement event between the agency and a Constituent.  Available: email, phone call, meeting, or letter. 
 
 ## 3. Entity Details
 ### 3.1 Constituent
@@ -63,10 +67,16 @@ This document defines the core entities for BrightFuture's nonprofit CRM impleme
     |  content     |  varchar |  False    |  False      |
 
 ## 4. Entity Relationships
-- One **Constituent** can have many **Donations**.  One **Donation** must be attributed to one **Constituent**
-- One **Constituent** can have 0-many **Attributes**.  One **Attribute** can be assigned to many **Constituents**
-- One **Constituent** can have many **Interactions**.  One **Interaction** must be attributed to one **Constituent**
-- One **Donation** can have 0-many **Campaigns**.  One **Campaign** can be assigned many **Donations**
+- One **Constituent** can have many **Donations**.
+- One **Constituent** can have many **Interactions**.
+- One **Constituent** can have many **Attributes** through **Constituent_Attribute**.  
+- One **Donation** can have many **Campaigns**.  
 
 ## 5. Change History
 - **v0.1 (2026-03-26):** Initialized basic fields Constituents, Attributes, Donations, Campaigns, and Interactions.
+- **v0.1 (2026-04-07):** Updated and simplified to respond to schema changes
+
+## 6. Design notes
+- v0.1 intentionally keeps **Constituent** simple by using single 'name' and 'address' fields.  A future version may normalize into 'first_name' + 'last_name' and 'address', 'city', 'state', 'ZIP'
+- **Donation** is modeled as belonging to one Constituent, and optionally one Campaign.  This keeps reporting simpler for this version.
+- **Attribute** is modeled as a reusable lookup table to support segmentation and tagging without adding columns to **Constituent**
