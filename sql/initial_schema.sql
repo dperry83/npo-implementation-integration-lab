@@ -9,7 +9,7 @@ CREATE TABLE constituents (
 
 CREATE TABLE attributes (
     id          SERIAL NOT NULL PRIMARY KEY,
-    type        VARCHAR NOT NULL,
+    type        VARCHAR NOT NULL UNIQUE,
     name        VARCHAR NOT NULL,
     description VARCHAR
 );
@@ -31,7 +31,7 @@ CREATE TABLE donations (
 CREATE TABLE campaigns (
     id          SERIAL PRIMARY KEY,
     name        VARCHAR NOT NULL UNIQUE,
-    goal        DECIMAL,
+    goal        DECIMAL NOT NULL,
     start_at    DATE NOT NULL,
     end_at      DATE
 );
