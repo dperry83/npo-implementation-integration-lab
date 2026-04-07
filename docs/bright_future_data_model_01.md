@@ -4,7 +4,7 @@
 **Scope:** Core fundraising and CRM entities for BrightFuture implementation lab
 
 ## 1. Purpose
-This document defines the logical data model for the BrightFuture nonprofit fundraising CRM iplementation.  It describes primary entities, their attributes, and the relationships required to support donor management, fundraising campaigns, donations, and constituent engagement tracking.  This model is intended to support:
+This document defines the logical data model for the BrightFuture nonprofit fundraising CRM implementation.  It describes primary entities, their attributes, and the relationships required to support donor management, fundraising campaigns, donations, and constituent engagement tracking.  This model is intended to support:
 - Data Migration from legacy systems
 - API integrations with external systems such as Salesforce
 - Reporting on donors, gifts, campaigns, and interactions
@@ -14,7 +14,7 @@ This document defines the logical data model for the BrightFuture nonprofit fund
 - **Constituent** - Individual supporter who engages with BrightFuture as a donor, prospect, volunteer, or supporter
 - **Attributes** - A reusable label, classification, or segment applied to constituents, such as "volunteer" or "board member"
 - **Donation** - A gift of monetary value, must be tied to a Constituent, optionally associated with a Campaign
-- **Campaign** - A fundraising initiative used to group and measure donations and interactions
+- **Campaign** - Used to group and measure donations
 - **Interaction** - A tracked engagement event between the agency and a Constituent.  Available: email, phone call, meeting, or letter. 
 
 ## 3. Entity Details
@@ -45,7 +45,9 @@ This document defines the logical data model for the BrightFuture nonprofit fund
     | --------------------------------------------------|
     |  id          |  integer |  True     |  True       |
     |  amount      |  decimal |  False    |  True       |
-    |  date        |  date    |  False    |  True       |
+    |  donated_at  |  date    |  False    |  True       |
+    |  constituent_id  |  integer  |  False  |  True    |
+    |  campaign_id |  integer | True      |  False      |
 
 ### 3.4 Campaign
 
@@ -63,14 +65,15 @@ This document defines the logical data model for the BrightFuture nonprofit fund
     | --------------------------------------------------|
     |  id          |  integer |  True     |  True       |
     |  channel     |  varchar |  False    |  True       |
-    |  date        |  date    |  False    |  True       |
+    |  happened_on |  date    |  False    |  True       |
     |  content     |  varchar |  False    |  False      |
+    |  constituent_id  |  integer | False |  False      |
 
 ## 4. Entity Relationships
 - One **Constituent** can have many **Donations**.
 - One **Constituent** can have many **Interactions**.
 - One **Constituent** can have many **Attributes** through **Constituent_Attribute**.  
-- One **Donation** can have many **Campaigns**.  
+- One **Donation** belongs to at most one **Campaign**.  
 
 ## 5. Change History
 - **v0.1 (2026-03-26):** Initialized basic fields Constituents, Attributes, Donations, Campaigns, and Interactions.
