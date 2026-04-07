@@ -72,8 +72,9 @@ This document defines the logical data model for the BrightFuture nonprofit fund
 ## 4. Entity Relationships
 - One **Constituent** can have many **Donations**.
 - One **Constituent** can have many **Interactions**.
-- One **Constituent** can have many **Attributes** through **Constituent_Attribute**.  
-- One **Donation** belongs to at most one **Campaign**.  
+- One **Constituent** can have many **Attributes** through **Constituent_Attribute**.
+- One **Campaign** can have many **Donations**
+- One **Donation** belongs to zero or one **Campaign**.  
 
 ## 5. Change History
 - **v0.1 (2026-03-26):** Initialized basic fields Constituents, Attributes, Donations, Campaigns, and Interactions.
