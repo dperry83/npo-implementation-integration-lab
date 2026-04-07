@@ -36,12 +36,6 @@ CREATE TABLE campaigns (
     end_at      DATE
 );
 
--- CREATE TABLE donations_campaigns (
---     donation_id     INT NOT NULL REFERENCES donations(id),
---     campaign_id     INT NOT NULL REFERENCES campaigns(id),
---     PRIMARY KEY (donation_id, campaign_id)
--- );
-
 CREATE TABLE interactions (
     id              SERIAL PRIMARY KEY,
     constituent_id  INT NOT NULL REFERENCES constituents(id),
@@ -49,9 +43,3 @@ CREATE TABLE interactions (
     happened_on     DATE NOT NULL,
     content         VARCHAR 
 );
-
--- CREATE TABLE constituents_interactions (
---     constituent_id  INT NOT NULL REFERENCES constituents(id),
---     interaction_id  INT NOT NULL REFERENCES interactions(id),
---     PRIMARY KEY (constituent_id, interaction_id)
--- );
