@@ -9,9 +9,10 @@ CREATE TABLE constituents (
 
 CREATE TABLE attributes (
     id          SERIAL NOT NULL PRIMARY KEY,
-    type        VARCHAR NOT NULL UNIQUE,
+    type        VARCHAR NOT NULL,
     name        VARCHAR NOT NULL,
-    description VARCHAR
+    description VARCHAR,
+    UNIQUE (type, name)
 );
 
 CREATE TABLE constituents_attributes (
@@ -20,20 +21,20 @@ CREATE TABLE constituents_attributes (
     PRIMARY KEY (constituent_id, attribute_id)
 );
 
-CREATE TABLE donations (
-    id              SERIAL PRIMARY KEY,
-    constituent_id  INT NOT NULL REFERENCES constituents(id),
-    campaign_id     INT REFERENCES campaigns(id),
-    amount          DECIMAL NOT NULL,
-    donated_at      DATE NOT NULL
-);
-
 CREATE TABLE campaigns (
     id          SERIAL PRIMARY KEY,
     name        VARCHAR NOT NULL UNIQUE,
     goal        DECIMAL NOT NULL,
     start_at    DATE NOT NULL,
     end_at      DATE
+);
+
+CREATE TABLE donations (
+    id              SERIAL PRIMARY KEY,
+    constituent_id  INT NOT NULL REFERENCES constituents(id),
+    campaign_id     INT REFERENCES campaigns(id),
+    amount          DECIMAL NOT NULL,
+    donated_at      DATE NOT NULL
 );
 
 CREATE TABLE interactions (
