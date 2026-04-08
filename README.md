@@ -57,6 +57,7 @@ Your role: you are the Implementation Engineer responsible for migrating BrightF
 
 1. Complete: Define BrightFuture’s data model (donors, donations, campaigns, interactions), including:
     - Ideate data model
+    - Create reusable database using Docker Official Image for PostgreSQL 
     - Create schema and seed data
     - Build initial reporting queries for POC
 2. Build migration mappings and Python scripts to clean and transform legacy exports.
