@@ -55,7 +55,10 @@ Your role: you are the Implementation Engineer responsible for migrating BrightF
 
 ## Roadmap (high level)
 
-1. Define BrightFuture’s data model (donors, donations, campaigns, interactions).
+1. Complete: Define BrightFuture’s data model (donors, donations, campaigns, interactions), including:
+    - Ideate data model
+    - Create schema and seed data
+    - Build initial reporting queries for POC
 2. Build migration mappings and Python scripts to clean and transform legacy exports.
 3. Design and test a basic REST integration (e.g., syncing key supporter data into Salesforce).
 4. Create a small set of fundraising and engagement dashboards.
